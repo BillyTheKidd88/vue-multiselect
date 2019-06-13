@@ -74,7 +74,7 @@
           </slot>
         </span>
         <span
-          v-if="isPlaceholderVisible"
+          v-bind:style="isPlaceholderVisible"
           class="multiselect__placeholder"
           @mousedown.prevent="toggle"
         >
@@ -300,7 +300,7 @@ export default {
       )
     },
     isPlaceholderVisible () {
-      return !this.internalValue.length && (!this.searchable || !this.isOpen)
+      return !this.internalValue.length && (!this.searchable || !this.isOpen) ? "display:block;" : "display:none;"
     },
     visibleValues () {
       return this.multiple ? this.internalValue.slice(0, this.limit) : []
