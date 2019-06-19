@@ -8,7 +8,9 @@
     @keydown.self.up.prevent="pointerBackward()"
     @keypress.enter.tab.stop.self="addPointerElement($event)"
     @keyup.esc="deactivate()"
-    class="multiselect" role="combobox" aria-owns="listbox-{{ id }}">
+    class="multiselect"
+    role="combobox"
+    aria-owns="listbox-{{ id }}">
       <slot name="caret" :toggle="toggle">
         <div @mousedown.prevent.stop="toggle()" class="multiselect__select"></div>
       </slot>
@@ -307,7 +309,7 @@ export default {
       )
     },
     isPlaceholderVisible () {
-      return !this.internalValue.length && (!this.searchable || !this.isOpen) ? "display:block;" : "display:none;"
+      return !this.internalValue.length && (!this.searchable || !this.isOpen) ? 'display:block;' : 'display:none;'
     },
     visibleValues () {
       return this.multiple ? this.internalValue.slice(0, this.limit) : []
