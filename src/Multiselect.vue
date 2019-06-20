@@ -66,7 +66,7 @@
           @keydown.delete.stop="removeLastElement()"
           class="multiselect__input"
           :aria-controls="'listbox-'+id"
-          :aria-activedescendant="this.$refs.options.$el.id"
+          :aria-activedescendant="id+'-0'"
         />
         <span
           v-if="isSingleLabelVisible"
