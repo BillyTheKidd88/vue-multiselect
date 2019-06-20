@@ -10,7 +10,7 @@
     @keyup.esc="deactivate()"
     class="multiselect"
     role="combobox"
-    :aria-owns="id">
+    :aria-owns="'listbox-'+id">
       <slot name="caret" :toggle="toggle">
         <div @mousedown.prevent.stop="toggle()" class="multiselect__select"></div>
       </slot>
