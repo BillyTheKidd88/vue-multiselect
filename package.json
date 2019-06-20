@@ -1,6 +1,6 @@
 {
   "name": "vue-multiselect-accessibility",
-  "version": "2.1.27",
+  "version": "2.1.28",
   "private": false,
   "types": "index.d.ts",
   "scripts": {
