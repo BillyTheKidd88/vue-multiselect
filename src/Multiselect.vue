@@ -65,8 +65,8 @@
           @keypress.enter.prevent.stop.self="addPointerElement($event)"
           @keydown.delete.stop="removeLastElement()"
           class="multiselect__input"
-          :aria-controls="id"
-          aria-activedescendant="{{ this.$refs.options.$el.id }}"
+          :aria-controls="'listbox-'+id"
+          :aria-activedescendant="this.$refs.options.$el.id"
         />
         <span
           v-if="isSingleLabelVisible"
@@ -97,7 +97,7 @@
           :style="{ maxHeight: optimizedHeight + 'px' }"
           ref="list"
         >
-          <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="id">
+          <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id">
             <slot name="beforeList"></slot>
             <li v-if="multiple && max === internalValue.length">
               <span class="multiselect__option">
