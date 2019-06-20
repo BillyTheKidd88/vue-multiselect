@@ -108,7 +108,7 @@
               <li class="multiselect__element"
                 v-for="(option, index) of filteredOptions"
                 :key="index"
-                v-bind:id="!(option && (option.$isLabel || option.$isDisabled)) ? id + '-' + option.id : null"
+                v-bind:id="!(option && (option.$isLabel || option.$isDisabled)) ? id + '-' + option.$id : null"
                 v-bind:role="!(option && (option.$isLabel || option.$isDisabled)) ? 'option' : null">
                 <span
                   v-if="!(option && (option.$isLabel || option.$isDisabled))"
