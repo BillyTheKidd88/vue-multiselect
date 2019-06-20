@@ -109,7 +109,7 @@
                 v-for="(option, index) of filteredOptions"
                 :key="index"
                 v-bind:id="id + '-' + index"
-                v-bind:role="!(option && (option.$isLabel || option.$isDisabled)) ? option">
+                v-bind:role="!(option && (option.$isLabel || option.$isDisabled)) ? option : group">
                 <span
                   v-if="!(option && (option.$isLabel || option.$isDisabled))"
                   :class="optionHighlight(index, option)"
