@@ -10,7 +10,7 @@
     @keyup.esc="deactivate()"
     class="multiselect"
     role="combobox"
-    aria-owns="`listbox-${guuid}`">
+    :aria-owns="listbox-"+"id">
       <slot name="caret" :toggle="toggle">
         <div @mousedown.prevent.stop="toggle()" class="multiselect__select"></div>
       </slot>
@@ -65,7 +65,7 @@
           @keypress.enter.prevent.stop.self="addPointerElement($event)"
           @keydown.delete.stop="removeLastElement()"
           class="multiselect__input"
-          aria-controls="`listbox-${guuid}`"
+          :aria-controls="listbox-"+"id"
           aria-activedescendant="{{ this.$refs.options.$el.id }}"
         />
         <span
@@ -97,7 +97,7 @@
           :style="{ maxHeight: optimizedHeight + 'px' }"
           ref="list"
         >
-          <ul class="multiselect__content" :style="contentStyle" role="listbox" id="`listbox-${guuid}`">
+          <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="listbox-"+"id">
             <slot name="beforeList"></slot>
             <li v-if="multiple && max === internalValue.length">
               <span class="multiselect__option">
