@@ -112,7 +112,7 @@ export default {
       alert('yolo')
       if (!this.closeOnSelect) return
       this.pointer = 0
-      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-1'))
+      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-1')
       /* istanbul ignore else */
       if (this.$refs.list) {
         this.$refs.list.scrollTop = 0
