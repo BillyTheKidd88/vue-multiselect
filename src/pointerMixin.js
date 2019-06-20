@@ -88,7 +88,7 @@ export default {
     pointerBackward () {
       if (this.pointer > 0) {
         this.pointer--
-        console.log(this.filteredOptions[this.pointer].id)
+        console.log(this.filteredOptions)
         if(document.getElementById(this.id + '-' + this.filteredOptions[this.pointer].id.toString())) {
           this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.filteredOptions[this.pointer].id.toString())
         }
