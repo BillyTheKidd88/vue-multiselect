@@ -111,6 +111,7 @@ export default {
       /* istanbul ignore else */
       if (!this.closeOnSelect) return
       this.pointer = 0
+      console.log(this.$refs.options)
       this.$refs.search.setAttribute('aria-activedescendant', this.$refs.options[0].id)
       /* istanbul ignore else */
       if (this.$refs.list) {
@@ -135,6 +136,7 @@ export default {
     pointerSet (index) {
       this.pointer = index
       this.pointerDirty = true
+      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + index.toString())
     }
   }
 }
