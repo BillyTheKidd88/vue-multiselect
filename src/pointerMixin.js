@@ -111,7 +111,7 @@ export default {
       /* istanbul ignore else */
       if (!this.closeOnSelect) return
       this.pointer = 0
-      this.$refs.search.setAttribute('aria-activedescendant', this.$refs.options.$el.id)
+      this.$refs.search.setAttribute('aria-activedescendant', this.$refs.options[0].id)
       /* istanbul ignore else */
       if (this.$refs.list) {
         this.$refs.list.scrollTop = 0
