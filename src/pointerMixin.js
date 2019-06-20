@@ -111,8 +111,11 @@ export default {
       /* istanbul ignore else */
       if (!this.closeOnSelect) return
       this.pointer = 0
-      console.log(this.$refs.options)
-      this.$refs.search.setAttribute('aria-activedescendant', this.$refs.options[0].id)
+      for(var i = 0; i < this.$refs.listbox.childNodes.length; ++i){
+        if(this.$refs.listbox.childNodes[i].getAttribute('role') == 'option'){
+          this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.childNodes[i].getAttribute('id'))
+        }
+      }
       /* istanbul ignore else */
       if (this.$refs.list) {
         this.$refs.list.scrollTop = 0

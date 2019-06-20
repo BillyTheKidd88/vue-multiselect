@@ -97,7 +97,7 @@
           :style="{ maxHeight: optimizedHeight + 'px' }"
           ref="list"
         >
-          <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id">
+          <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id" ref="listbox">
             <slot name="beforeList"></slot>
             <li v-if="multiple && max === internalValue.length">
               <span class="multiselect__option">
@@ -109,8 +109,7 @@
                 v-for="(option, index) of filteredOptions"
                 :key="index"
                 v-bind:id="id + '-' + index"
-                v-bind:ref="option && (option.$isLabel || option.$isDisabled) ? 'groups' : 'options'"
-                role="option">
+                v-bind:role="!(option && (option.$isLabel || option.$isDisabled)) ? option">
                 <span
                   v-if="!(option && (option.$isLabel || option.$isDisabled))"
                   :class="optionHighlight(index, option)"
