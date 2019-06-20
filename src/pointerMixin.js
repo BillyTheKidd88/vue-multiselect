@@ -109,15 +109,17 @@ export default {
     },
     pointerReset () {
       /* istanbul ignore else */
+      alert('yolo')
       if (!this.closeOnSelect) return
       this.pointer = 0
-      alert('heyo')
-      for(var i = 0; i < this.$refs.listbox.childNodes.length; ++i){
-        if(this.$refs.listbox.childNodes[i].getAttribute('role') == 'option'){
-          alert('yolo')
-          this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.childNodes[i].getAttribute('id'))
-        }
-      }
+      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-1'))
+      //alert('heyo')
+      //for(var i = 0; i < this.$refs.listbox.childNodes.length; ++i){
+        //if(this.$refs.listbox.childNodes[i].getAttribute('role') == 'option'){
+          //alert('yolo')
+          //this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.childNodes[i].getAttribute('id'))
+        //}
+      //}
       /* istanbul ignore else */
       if (this.$refs.list) {
         this.$refs.list.scrollTop = 0
