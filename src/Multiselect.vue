@@ -10,7 +10,7 @@
     @keyup.esc="deactivate()"
     class="multiselect"
     role="combobox"
-    :aria-owns="listbox-"+"id">
+    :aria-owns="id">
       <slot name="caret" :toggle="toggle">
         <div @mousedown.prevent.stop="toggle()" class="multiselect__select"></div>
       </slot>
@@ -65,7 +65,7 @@
           @keypress.enter.prevent.stop.self="addPointerElement($event)"
           @keydown.delete.stop="removeLastElement()"
           class="multiselect__input"
-          :aria-controls="listbox-"+"id"
+          :aria-controls="id"
           aria-activedescendant="{{ this.$refs.options.$el.id }}"
         />
         <span
