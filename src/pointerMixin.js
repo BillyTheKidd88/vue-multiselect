@@ -113,6 +113,7 @@ export default {
       this.pointer = 0
       for(var i = 0; i < this.$refs.listbox.childNodes.length; ++i){
         if(this.$refs.listbox.childNodes[i].getAttribute('role') == 'option'){
+          alert('yolo')
           this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.childNodes[i].getAttribute('id'))
         }
       }
