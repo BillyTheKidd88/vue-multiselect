@@ -69,7 +69,7 @@ export default {
       /* istanbul ignore else */
       if (this.pointer < this.filteredOptions.length - 1) {
         this.pointer++
-        this.$refs.search.$el.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.$el.getAttribute('aria-activedescendant')).nextElementSibling.id)
+        this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).nextElementSibling.id)
         /* istanbul ignore next */
         if (this.$refs.list.scrollTop <= this.pointerPosition - (this.visibleElements - 1) * this.optionHeight) {
           this.$refs.list.scrollTop = this.pointerPosition - (this.visibleElements - 1) * this.optionHeight
@@ -86,7 +86,7 @@ export default {
     pointerBackward () {
       if (this.pointer > 0) {
         this.pointer--
-        this.$refs.search.$el.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.$el.getAttribute('aria-activedescendant')).previousElementSibling.id)
+        this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).previousElementSibling.id)
         /* istanbul ignore else */
         if (this.$refs.list.scrollTop >= this.pointerPosition) {
           this.$refs.list.scrollTop = this.pointerPosition
@@ -111,7 +111,7 @@ export default {
       /* istanbul ignore else */
       if (!this.closeOnSelect) return
       this.pointer = 0
-      this.$refs.search.$el.setAttribute('aria-activedescendant', this.$refs.options.$el.id)
+      this.$refs.search.setAttribute('aria-activedescendant', this.$refs.options.$el.id)
       /* istanbul ignore else */
       if (this.$refs.list) {
         this.$refs.list.scrollTop = 0
