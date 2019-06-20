@@ -111,6 +111,7 @@ export default {
       /* istanbul ignore else */
       if (!this.closeOnSelect) return
       this.pointer = 0
+      alert('heyo')
       for(var i = 0; i < this.$refs.listbox.childNodes.length; ++i){
         if(this.$refs.listbox.childNodes[i].getAttribute('role') == 'option'){
           alert('yolo')
