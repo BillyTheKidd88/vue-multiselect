@@ -136,7 +136,7 @@ export default {
       this.pointer = index
       this.pointerDirty = true
       this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + index.toString())
-    }
+    },
     ariaActiveDescendantSet() {
       for (var i = 0; i < this.options.length; ++i) {
         if (this.options[i] == this.filteredOptions[this.pointer]) {
