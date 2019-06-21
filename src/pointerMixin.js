@@ -111,9 +111,9 @@ export default {
       /* istanbul ignore else */
       if (!this.closeOnSelect) return
       this.pointer = 0
-      for(var i = this.$refs.listbox.childNodes.length - 1; i < this.$refs.listbox.childNodes.length; --i){
-        if(this.$refs.listbox.childNodes[i].getAttribute('role')){
-          this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.childNodes[i].id)
+      for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
+        if (this.$refs.listbox.children[i].getAttribute('role')) {
+          this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
         }
       }
       /* istanbul ignore else */
@@ -127,17 +127,16 @@ export default {
         this.pointer = this.filteredOptions.length
           ? this.filteredOptions.length - 1
           : 0
-        var i = this.filteredOptions.length ? childNodes.length - 1 : 0
-        if(this.filteredOptions.length){
-          for(var i = childNodes.length - 1; i < this.$refs.listbox.childNodes.length; --i){
-            if(this.$refs.listbox.childNodes[i].getAttribute('role')){
-              this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.childNodes[i].id)
+        if (this.filteredOptions.length) {
+          for (var i = this.$refs.listbox.children.length - 1; i < this.$refs.listbox.children.length; --i) {
+            if (this.$refs.listbox.children[i].getAttribute('role')) {
+              this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
             }
           }
-        }else{
-          for(var i = 0; i < this.$refs.listbox.childNodes.length; ++i){
-            if(this.$refs.listbox.childNodes[i].getAttribute('role')){
-              this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.childNodes[i].id)
+        } else {
+          for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
+            if (this.$refs.listbox.children[i].getAttribute('role')) {
+              this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
             }
           }
         }

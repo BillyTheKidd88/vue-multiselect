@@ -649,9 +649,9 @@ export default {
       /* istanbul ignore else  */
       if (this.groupValues && this.pointer === 0 && this.filteredOptions.length) {
         this.pointer = 1
-        for(var i = 0; i < this.$refs.listbox.childNodes.length; ++i){
-          if(this.$refs.listbox.childNodes[i].getAttribute('role')){
-            this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.childNodes[i].id)
+        for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
+          if (this.$refs.listbox.children[i].getAttribute('role')) {
+            this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
           }
         }
       }
