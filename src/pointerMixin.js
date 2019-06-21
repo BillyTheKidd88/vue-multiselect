@@ -114,6 +114,7 @@ export default {
       for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
         if (this.$refs.listbox.children[i].getAttribute('role')) {
           this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
+          break
         }
       }
       /* istanbul ignore else */
@@ -131,12 +132,14 @@ export default {
           for (var i = this.$refs.listbox.children.length - 1; i < this.$refs.listbox.children.length; --i) {
             if (this.$refs.listbox.children[i].getAttribute('role')) {
               this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
+              break
             }
           }
         } else {
           for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
             if (this.$refs.listbox.children[i].getAttribute('role')) {
               this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
+              break
             }
           }
         }
