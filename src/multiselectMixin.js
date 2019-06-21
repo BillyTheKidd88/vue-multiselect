@@ -338,7 +338,6 @@ export default {
     },
     filteredOptions () {
       const search = this.search || ''
-      console.log(this.search)
       const normalizedSearch = search.toLowerCase().trim()
 
       let options = this.options.concat()
@@ -650,7 +649,11 @@ export default {
       /* istanbul ignore else  */
       if (this.groupValues && this.pointer === 0 && this.filteredOptions.length) {
         this.pointer = 1
-        this.ariaActiveDescendantSet()
+        for(var i = 0; i < this.$refs.listbox.childNodes.length; ++i){
+          if(this.$refs.listbox.childNodes[i].getAttribute('role')){
+            this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.childNodes[i].id)
+          }
+        }
       }
 
       this.isOpen = true
