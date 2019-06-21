@@ -649,6 +649,7 @@ export default {
       /* istanbul ignore else  */
       if (this.groupValues && this.pointer === 0 && this.filteredOptions.length) {
         this.pointer = 1
+        console.log(this.$refs.listbox.children)
         for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
           if (this.$refs.listbox.children[i].getAttribute('role')) {
             this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
