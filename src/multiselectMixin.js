@@ -338,6 +338,7 @@ export default {
     },
     filteredOptions () {
       const search = this.search || ''
+      console.log(this.search)
       const normalizedSearch = search.toLowerCase().trim()
 
       let options = this.options.concat()

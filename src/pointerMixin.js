@@ -143,7 +143,7 @@ export default {
         console.log(this.options[i])
         console.log(this.filteredOptions[this.pointer])
         if (this.options[i] == this.filteredOptions[this.pointer]) {
-          this.$refs.search.setAttribute('aria-activedescendant', this.id + i.toString())
+          this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + i.toString())
         }
       }
     }
