@@ -649,6 +649,7 @@ export default {
       /* istanbul ignore else  */
       if (this.groupValues && this.pointer === 0 && this.filteredOptions.length) {
         this.pointer = 1
+        this.ariaActiveDescendantSet()
       }
 
       this.isOpen = true

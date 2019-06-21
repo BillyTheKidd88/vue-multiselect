@@ -69,9 +69,7 @@ export default {
       /* istanbul ignore else */
       if (this.pointer < this.filteredOptions.length - 1) {
         this.pointer++
-        if(document.getElementById(this.id + '-' + this.filteredOptions[this.pointer].id.toString())) {
-          this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.filteredOptions[this.pointer].id.toString())
-        }
+        this.ariaActiveDescendantSet()
         /* istanbul ignore next */
         if (this.$refs.list.scrollTop <= this.pointerPosition - (this.visibleElements - 1) * this.optionHeight) {
           this.$refs.list.scrollTop = this.pointerPosition - (this.visibleElements - 1) * this.optionHeight
@@ -88,10 +86,7 @@ export default {
     pointerBackward () {
       if (this.pointer > 0) {
         this.pointer--
-        console.log(this.filteredOptions)
-        if(document.getElementById(this.id + '-' + this.filteredOptions[this.pointer].id.toString())) {
-          this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.filteredOptions[this.pointer].id.toString())
-        }
+        this.ariaActiveDescendantSet()
         /* istanbul ignore else */
         if (this.$refs.list.scrollTop >= this.pointerPosition) {
           this.$refs.list.scrollTop = this.pointerPosition
@@ -116,7 +111,6 @@ export default {
       /* istanbul ignore else */
       if (!this.closeOnSelect) return
       this.pointer = 0
-      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.filteredOptions[0].id.toString())
       /* istanbul ignore else */
       if (this.$refs.list) {
         this.$refs.list.scrollTop = 0
@@ -128,11 +122,7 @@ export default {
         this.pointer = this.filteredOptions.length
           ? this.filteredOptions.length - 1
           : 0
-        if(this.filteredOptions.length){
-          this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.filteredOptions[this.filteredOptions.length - 1].id.toString())
-        }else{
-          this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.filteredOptions[0].id.toString())
-        }
+        this.ariaActiveDescendantSet()
       }
 
       if (this.filteredOptions.length > 0 &&
@@ -145,7 +135,14 @@ export default {
     pointerSet (index) {
       this.pointer = index
       this.pointerDirty = true
-      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.filteredOptions[index].id.toString())
+      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + index.toString())
+    }
+    ariaActiveDescendantSet() {
+      for (var i = 0; i < this.options.length; ++i) {
+        if (this.options[i] == this.filteredOptions[this.pointer]) {
+          this.$refs.search.setAttribute('aria-activedescendant', this.id + i.toString())
+        }
+      }
     }
   }
 }
