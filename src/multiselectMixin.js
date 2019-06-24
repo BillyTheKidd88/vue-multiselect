@@ -649,12 +649,15 @@ export default {
       /* istanbul ignore else  */
       if (this.groupValues && this.pointer === 0 && this.filteredOptions.length) {
         this.pointer = 1
+        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
+        /*
         for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
           if (this.$refs.listbox.children[i].getAttribute('role')) {
             this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
             break
           }
         }
+        */
       }
 
       this.isOpen = true

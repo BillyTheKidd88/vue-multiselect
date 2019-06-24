@@ -69,7 +69,8 @@ export default {
       /* istanbul ignore else */
       if (this.pointer < this.filteredOptions.length - 1) {
         this.pointer++
-        this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).nextElementSibling.id)
+        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
+        //this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).nextElementSibling.id)
         /* istanbul ignore next */
         if (this.$refs.list.scrollTop <= this.pointerPosition - (this.visibleElements - 1) * this.optionHeight) {
           this.$refs.list.scrollTop = this.pointerPosition - (this.visibleElements - 1) * this.optionHeight
@@ -86,7 +87,8 @@ export default {
     pointerBackward () {
       if (this.pointer > 0) {
         this.pointer--
-        this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).previousElementSibling.id)
+        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
+        //this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).previousElementSibling.id)
         /* istanbul ignore else */
         if (this.$refs.list.scrollTop >= this.pointerPosition) {
           this.$refs.list.scrollTop = this.pointerPosition
@@ -111,12 +113,15 @@ export default {
       /* istanbul ignore else */
       if (!this.closeOnSelect) return
       this.pointer = 0
+      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
+      /*
       for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
         if (this.$refs.listbox.children[i].getAttribute('role')) {
           this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
           break
         }
       }
+      */
       /* istanbul ignore else */
       if (this.$refs.list) {
         this.$refs.list.scrollTop = 0
@@ -128,14 +133,11 @@ export default {
         this.pointer = this.filteredOptions.length
           ? this.filteredOptions.length - 1
           : 0
+
+        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
         /*
         if (this.filteredOptions.length) {
-          for (var i = this.$refs.listbox.children.length - 1; i > 0; --i) {
-            if (this.$refs.listbox.children[i].getAttribute('role')) {
-              this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
-              break
-            }
-          }
+          this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
         } else {
           for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
             if (this.$refs.listbox.children[i].getAttribute('role')) {
@@ -145,7 +147,6 @@ export default {
           }
         }
         */
-        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
       }
 
       if (this.filteredOptions.length > 0 &&
