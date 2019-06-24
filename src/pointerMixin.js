@@ -128,6 +128,7 @@ export default {
         this.pointer = this.filteredOptions.length
           ? this.filteredOptions.length - 1
           : 0
+        /*
         if (this.filteredOptions.length) {
           for (var i = this.$refs.listbox.children.length - 1; i > 0; --i) {
             if (this.$refs.listbox.children[i].getAttribute('role')) {
@@ -143,6 +144,8 @@ export default {
             }
           }
         }
+        */
+        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
       }
 
       if (this.filteredOptions.length > 0 &&
