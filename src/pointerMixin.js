@@ -125,24 +125,18 @@ export default {
     pointerAdjust () {
       /* istanbul ignore else */
       if (this.pointer >= this.filteredOptions.length - 1) {
-        var oldPointer = this.pointer;
+        var oldPointer = this.pointer
         this.pointer = this.filteredOptions.length
           ? this.filteredOptions.length - 1
           : 0
-        console.log('yolo')
-        console.log(this.pointer == this.filteredOptions.length - 1)
-        console.log(this.filteredOptions[this.pointer])
-        console.log('heyo')
-        if (this.filteredOptions.length) {
-          for (var i = 0; i < oldPointer - this.Pointer; ++i) {
-            this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).previousElementSibling.id)
+        var diff = this.pointer - oldPointer
+        if (diff > 0) {
+          for (var i = 0; i < diff; ++i) {
+            this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).nextElementSibling.id)
           }
-        } else {
-          for (var i = 0; i < this.$refs.listbox.children.length; ++i) {
-            if (this.$refs.listbox.children[i].getAttribute('role')) {
-              this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
-              break
-            }
+        } else if (diff < 0) {
+          for (var i = diff; i < 0; ++i) {
+            this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).previousElementSibling.id)
           }
         }
       }
