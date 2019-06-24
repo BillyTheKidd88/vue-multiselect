@@ -99,8 +99,8 @@
           <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id" ref="listbox">
             <slot name="beforeList"></slot>
             <li>
-              <span>
-                {{ filteredOptions }}
+              <span aria-live="assertive">
+                showing {{ filteredOptions.length }} options
               </span>
             </li>
             <li v-if="multiple && max === internalValue.length">
