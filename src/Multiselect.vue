@@ -96,8 +96,13 @@
           :style="{ maxHeight: optimizedHeight + 'px' }"
           ref="list"
         >
-          <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id" ref="listbox" aria-live="assertive" aria-relevant="additions">
+          <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id" ref="listbox">
             <slot name="beforeList"></slot>
+            <li>
+              <span>
+                {{ filteredOptions }}
+              </span>
+            </li>
             <li v-if="multiple && max === internalValue.length">
               <span class="multiselect__option">
                 <slot name="maxElements">Maximum of {{ max }} options selected. First remove a selected option to select another.</slot>
