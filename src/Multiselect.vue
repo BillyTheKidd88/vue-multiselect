@@ -307,7 +307,6 @@ export default {
       )
     },
     isPlaceholderVisible () {
-      //return !this.internalValue.length && (!this.searchable || !this.isOpen) ? 'display:block;' : 'display:none;'
       return !this.internalValue.length && (!this.searchable || !this.isOpen)
     },
     visibleValues () {
