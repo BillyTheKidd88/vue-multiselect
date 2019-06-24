@@ -128,6 +128,7 @@ export default {
         this.pointer = this.filteredOptions.length
           ? this.filteredOptions.length - 1
           : 0
+        console.log(this.$refs.listbox.children)
         if (this.filteredOptions.length) {
           for (var i = this.$refs.listbox.children.length - 1; i > 0; --i) {
             if (this.$refs.listbox.children[i].getAttribute('role')) {
