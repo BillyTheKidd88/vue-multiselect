@@ -26,7 +26,7 @@ export default {
     },
     visibleElements () {
       return this.optimizedHeight / this.optionHeight
-    }
+    },
     pointer () {
       this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
     }
