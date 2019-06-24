@@ -649,7 +649,6 @@ export default {
       /* istanbul ignore else  */
       if (this.groupValues && this.pointer === 0 && this.filteredOptions.length) {
         this.pointer = 1
-        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
       }
 
       this.isOpen = true
