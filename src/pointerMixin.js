@@ -125,20 +125,9 @@ export default {
     pointerAdjust () {
       /* istanbul ignore else */
       if (this.pointer >= this.filteredOptions.length - 1) {
-        var oldPointer = this.pointer
         this.pointer = this.filteredOptions.length
           ? this.filteredOptions.length - 1
           : 0
-        var diff = this.pointer - oldPointer
-        if (diff > 0) {
-          for (var i = 0; i < diff; ++i) {
-            this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).nextElementSibling.id)
-          }
-        } else if (diff < 0) {
-          for (var i = diff; i < 0; ++i) {
-            this.$refs.search.setAttribute('aria-activedescendant', document.getElementById(this.$refs.search.getAttribute('aria-activedescendant')).previousElementSibling.id)
-          }
-        }
       }
 
       if (this.filteredOptions.length > 0 &&
