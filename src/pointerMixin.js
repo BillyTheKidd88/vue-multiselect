@@ -34,9 +34,6 @@ export default {
     },
     isOpen () {
       this.pointerDirty = false
-    },
-    pointer : funtion() {
-      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
     }
   },
   methods: {
@@ -72,7 +69,7 @@ export default {
       /* istanbul ignore else */
       if (this.pointer < this.filteredOptions.length - 1) {
         this.pointer++
-        //this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
+        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
         /* istanbul ignore next */
         if (this.$refs.list.scrollTop <= this.pointerPosition - (this.visibleElements - 1) * this.optionHeight) {
           this.$refs.list.scrollTop = this.pointerPosition - (this.visibleElements - 1) * this.optionHeight
@@ -89,7 +86,7 @@ export default {
     pointerBackward () {
       if (this.pointer > 0) {
         this.pointer--
-        //this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
+        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
         /* istanbul ignore else */
         if (this.$refs.list.scrollTop >= this.pointerPosition) {
           this.$refs.list.scrollTop = this.pointerPosition
@@ -114,12 +111,12 @@ export default {
       /* istanbul ignore else */
       if (!this.closeOnSelect) return
       this.pointer = 0
-      //this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
+      this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
       /* istanbul ignore else */
       if (this.$refs.list) {
         this.$refs.list.scrollTop = 0
       }
-    },this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
+    },
     pointerAdjust () {
       /* istanbul ignore else */
       if (this.pointer >= this.filteredOptions.length - 1) {
@@ -127,7 +124,7 @@ export default {
           ? this.filteredOptions.length - 1
           : 0
 
-        //this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
+        this.$refs.search.setAttribute('aria-activedescendant', this.id + '-' + this.pointer.toString())
       }
 
       if (this.filteredOptions.length > 0 &&
