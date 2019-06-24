@@ -129,7 +129,7 @@ export default {
           ? this.filteredOptions.length - 1
           : 0
         if (this.filteredOptions.length) {
-          for (var i = this.$refs.listbox.children.length - 1; i < this.$refs.listbox.children.length; --i) {
+          for (var i = this.$refs.listbox.children.length - 1; i > 0; --i) {
             if (this.$refs.listbox.children[i].getAttribute('role')) {
               this.$refs.search.setAttribute('aria-activedescendant', this.$refs.listbox.children[i].id)
               break
