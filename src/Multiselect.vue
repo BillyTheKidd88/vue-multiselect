@@ -409,10 +409,15 @@ export default {
       }
     },
     totalNumberOfOptions () {
+      var totalOptions = 0
+      for (var i = 0; i < this.options.length; ++i) {
+        totalOptions += this.options[this.groupValues].length
+      }
+      
       if (this.groupSelect) {
-        return this.options.length
+        return totalOptions.length + options.length
       } else {
-        return this.options.filter(function (option) { !option.$isLabel }).length
+        return totalOptions
       }
     }
   }
