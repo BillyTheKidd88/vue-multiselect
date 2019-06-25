@@ -392,13 +392,6 @@ export default {
           : true)
       )
     },
-    showNumberOfOptionsLabelText () {
-      if (this.showNumberOfOptionsLabel) {
-        return this.showNumberOfOptionsLabel.replace('{0}', this.numberOfOptions.toString()).replace('{1}', this.totalNumberOfOptions.toString())
-      } else {
-        return 'Showing ' + this.numberOfOptions.toString() + ' of ' + this.totalNumberOfOptions.toString() + ' options'
-      }
-    },
     numberOfOptions () {
       if (this.groupSelect) {
         return this.filteredOptions.length
@@ -411,6 +404,15 @@ export default {
         return this.options.length
       } else {
         return this.options.filter(function (option) { !option.$isLabel }).length
+      }
+    }
+  },
+  watch: {
+    showNumberOfOptionsLabelText () {
+      if (this.showNumberOfOptionsLabel) {
+        return this.showNumberOfOptionsLabel.replace('{0}', this.numberOfOptions.toString()).replace('{1}', this.totalNumberOfOptions.toString())
+      } else {
+        return 'Showing ' + this.numberOfOptions.toString() + ' of ' + this.totalNumberOfOptions.toString() + ' options'
       }
     }
   }
