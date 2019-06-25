@@ -393,8 +393,8 @@ export default {
       )
     },
     showNumberOfOptionsLabelText () {
-      console.log(filteredOptions)
-      console.log(options)
+      console.log(this.filteredOptions)
+      console.log(this.options)
       if (this.showNumberOfOptionsLabel) {
         return this.showNumberOfOptionsLabel.replace('{0}', this.numberOfOptions.toString()).replace('{1}', this.totalNumberOfOptions.toString())
       } else {
