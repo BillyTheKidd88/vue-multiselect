@@ -393,6 +393,7 @@ export default {
       )
     },
     showNumberOfOptionsLabelText () {
+      console.log(filteredOptions)
       if (this.showNumberOfOptionsLabel) {
         return this.showNumberOfOptionsLabel.replace('{0}', this.numberOfOptions.toString()).replace('{1}', this.totalNumberOfOptions.toString())
       } else {
@@ -403,6 +404,7 @@ export default {
       if (this.groupSelect) {
         return this.filteredOptions.length
       } else {
+        console.log(filteredOptions)
         return this.filteredOptions.filter(function (option) { !option.$isLabel }).length
       }
     },
