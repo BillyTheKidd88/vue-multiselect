@@ -405,7 +405,7 @@ export default {
         return this.filteredOptions.length
       } else {
         console.log(this.filteredOptions)
-        return this.filteredOptions.filter(function (option) { !option.$isLabel }).length
+        return this.filteredOptions.filter(function (option) { return option.$isLabel == null ? true : option.$isLabel }).length
       }
     },
     totalNumberOfOptions () {
