@@ -411,6 +411,9 @@ export default {
     totalNumberOfOptions () {
       var totalOptions = 0
       for (var i = 0; i < this.options.length; ++i) {
+        console.log('heyo')
+        console.log(this.groupValues)
+        console.log('yolo')
         totalOptions += this.options[this.groupValues].length
       }
       if (this.groupSelect) {
