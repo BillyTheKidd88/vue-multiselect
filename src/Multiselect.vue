@@ -100,7 +100,7 @@
             <slot name="beforeList"></slot>
             <li v-if="showNumberOfOptions" class="multiselect__option">
               <span v-if="showNumberOfOptionsText" aria-live="assertive">
-                {{ showNumberOfOptionsText.format(numberOfOptions, totalNumberOfOptions) }}
+                {{ showNumberOfOptionsText.replace("{0}", "${numberOfOptions}").replace("{1}", "${totalNumberOfOptions}") }}
               </span>
               <span v-else aria-live="assertive">
                 Showing {{ numberOfOptions }} of {{ totalNumberOfOptions }} options
