@@ -8,9 +8,7 @@
     @keydown.self.up.prevent="pointerBackward()"
     @keypress.enter.tab.stop.self="addPointerElement($event)"
     @keyup.esc="deactivate()"
-    class="multiselect"
-    role="combobox"
-    :aria-owns="'listbox-'+id">
+    class="multiselect">
       <slot name="caret" :toggle="toggle">
         <div @mousedown.prevent.stop="toggle()" class="multiselect__select"></div>
       </slot>
@@ -65,7 +63,6 @@
           @keypress.enter.prevent.stop.self="addPointerElement($event)"
           @keydown.delete.stop="removeLastElement()"
           class="multiselect__input"
-          :aria-controls="'listbox-'+id"
         />
         <span
           v-if="isSingleLabelVisible"
@@ -96,7 +93,7 @@
           :style="{ maxHeight: optimizedHeight + 'px' }"
           ref="list"
         >
-          <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id" ref="listbox">
+          <ul class="multiselect__content" :style="contentStyle">
             <slot name="beforeList"></slot>
             <li v-if="showNumberOfOptions" class="multiselect__option">
               <span aria-live="assertive">
@@ -111,9 +108,7 @@
             <template v-if="!max || internalValue.length < max">
               <li class="multiselect__element"
                 v-for="(option, index) of filteredOptions"
-                :key="index"
-                v-bind:id="id + '-' + index"
-                v-bind:role="!(option && (option.$isLabel || option.$isDisabled)) ? 'option' : null">
+                :key="index">
                 <span
                   v-if="!(option && (option.$isLabel || option.$isDisabled))"
                   :class="optionHighlight(index, option)"
