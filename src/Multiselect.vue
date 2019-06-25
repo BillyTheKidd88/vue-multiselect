@@ -100,7 +100,7 @@
             <slot name="beforeList"></slot>
             <li v-if="showNumberOfOptions" class="multiselect__option">
               <span v-if="showNumberOfOptionsText" aria-live="assertive">
-                {{ String.format(showNumberOfOptionsText, numberOfOptions, totalNumberOfOptions) }}
+                {{ showNumberOfOptionsText.format(numberOfOptions, totalNumberOfOptions) }}
               </span>
               <span v-else aria-live="assertive">
                 Showing {{ numberOfOptions }} of {{ totalNumberOfOptions }} options
@@ -317,6 +317,7 @@ export default {
     /**
      * String to show how many options in the drop down are being displayed to the user
      * Useful for when the drop down is searchable
+     * Must contain "{0}" and "{1}" in order to have the number of options added via .format
      * @default ''
      * @type {String}
      */
