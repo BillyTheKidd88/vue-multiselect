@@ -341,7 +341,7 @@ export default {
       const normalizedSearch = search.toLowerCase().trim()
 
       let options = this.options.concat()
-      console.log(this.groupValues)
+
       /* istanbul ignore else */
       if (this.internalSearch) {
         options = this.groupValues

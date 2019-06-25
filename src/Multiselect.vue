@@ -98,11 +98,6 @@
         >
           <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id" ref="listbox">
             <slot name="beforeList"></slot>
-            <li v-if="showNumberOfOptions" class="multiselect__option">
-              <span aria-live="assertive">
-                {{ showNumberOfOptionsLabelText }}
-              </span>
-            </li>
             <li v-if="multiple && max === internalValue.length">
               <span class="multiselect__option">
                 <slot name="maxElements">Maximum of {{ max }} options selected. First remove a selected option to select another.</slot>
@@ -301,26 +296,6 @@ export default {
     tabindex: {
       type: Number,
       default: 0
-    },
-    /**
-     * Determines whether the number of available options and number of total options are displayed to the user
-     * @default false
-     * @type {Boolean}
-     */
-    showNumberOfOptions: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * String to show how many options in the drop down are being displayed to the user
-     * Useful for when the drop down is searchable
-     * Must contain "{0}" and "{1}" in order to have the number of options added via .format
-     * @default ''
-     * @type {String}
-     */
-    showNumberOfOptionsLabel: {
-      type: String,
-      default: ''
     }
   },
   computed: {
@@ -391,31 +366,6 @@ export default {
           ? this.isOpen
           : true)
       )
-    },
-    showNumberOfOptionsLabelText () {
-      if (this.showNumberOfOptionsLabel) {
-        return this.showNumberOfOptionsLabel.replace('{0}', this.numberOfOptions.toString()).replace('{1}', this.totalNumberOfOptions.toString())
-      } else {
-        return 'Showing ' + this.numberOfOptions.toString() + ' of ' + this.totalNumberOfOptions.toString() + ' options'
-      }
-    },
-    numberOfOptions () {
-      if (this.groupSelect) {
-        return this.filteredOptions.length
-      } else {
-        return this.filteredOptions.filter(function (option) { return option.$isLabel == null ? true : !option.$isLabel }).length
-      }
-    },
-    totalNumberOfOptions () {
-      var totalOptions = 0
-      for (var i = 0; i < this.options.length; ++i) {
-        totalOptions += this.options[i][this.groupValues].length
-      }
-      if (this.groupSelect) {
-        return totalOptions + this.options.length
-      } else {
-        return totalOptions
-      }
     }
   }
 }
