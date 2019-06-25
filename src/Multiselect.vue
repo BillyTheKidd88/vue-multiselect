@@ -99,11 +99,8 @@
           <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id" ref="listbox">
             <slot name="beforeList"></slot>
             <li v-if="showNumberOfOptions" class="multiselect__option">
-              <span v-if="showNumberOfOptionsText" aria-live="assertive">
-                {{ showNumberOfOptionsText.replace("{0}", "${numberOfOptions}").replace("{1}", "${totalNumberOfOptions}") }}
-              </span>
-              <span v-else aria-live="assertive">
-                Showing {{ numberOfOptions }} of {{ totalNumberOfOptions }} options
+              <span aria-live="assertive">
+                {{ showNumberOfOptionsLabelText }}
               </span>
             </li>
             <li v-if="multiple && max === internalValue.length">
@@ -321,7 +318,7 @@ export default {
      * @default ''
      * @type {String}
      */
-    showNumberOfOptionsText: {
+    showNumberOfOptionsLabel: {
       type: String,
       default: ''
     }
@@ -395,15 +392,22 @@ export default {
           : true)
       )
     },
+    showNumberOfOptionsLabelText () {
+      if (showNumberOfOptionsLabel) {
+        return showNumberOfOptionsLabel.replace("{0}", numberOfOptions.toString()).replace("{1}", totalNumberOfOptions.toString())
+      } else {
+        return "Showing " + numberOfOptions.toString() + " of " + totalNumberOfOptions.toString() + " options"
+      }
+    },
     numberOfOptions () {
-      if (this.group-select) {
+      if (this.groupSelect) {
         return this.filteredOptions.length
       } else {
         return this.filteredOptions.filter(function (option) { !option.$isLabel }).length
       }
     },
     totalNumberOfOptions () {
-      if (this.group-select) {
+      if (this.groupSelect) {
         return this.options.length
       } else {
         return this.options.filter(function (option) { !option.$isLabel }).length
