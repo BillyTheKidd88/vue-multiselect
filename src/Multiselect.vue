@@ -393,7 +393,7 @@ export default {
           ? this.isOpen
           : true)
       )
-    }
+    },
     numberOfOptions () {
       if (this.groupSelect) {
         return filteredOptions.length
