@@ -414,7 +414,7 @@ export default {
         totalOptions += this.options[this.groupValues].length
       }
       if (this.groupSelect) {
-        return totalOptions.length + this.options.length
+        return totalOptions + this.options.length
       } else {
         return totalOptions
       }
