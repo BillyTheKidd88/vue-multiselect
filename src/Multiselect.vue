@@ -398,9 +398,7 @@ export default {
       } else {
         return 'Showing ' + this.numberOfOptions.toString() + ' of ' + this.totalNumberOfOptions.toString() + ' options'
       }
-    }
-  },
-  watch: {
+    },
     numberOfOptions () {
       if (this.groupSelect) {
         return this.filteredOptions.length
