@@ -413,9 +413,8 @@ export default {
       for (var i = 0; i < this.options.length; ++i) {
         totalOptions += this.options[this.groupValues].length
       }
-      
       if (this.groupSelect) {
-        return totalOptions.length + options.length
+        return totalOptions.length + this.options.length
       } else {
         return totalOptions
       }
