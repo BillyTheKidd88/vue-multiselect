@@ -393,10 +393,10 @@ export default {
       )
     },
     showNumberOfOptionsLabelText () {
-      if (showNumberOfOptionsLabel) {
-        return showNumberOfOptionsLabel.replace("{0}", numberOfOptions.toString()).replace("{1}", totalNumberOfOptions.toString())
+      if (this.showNumberOfOptionsLabel) {
+        return this.showNumberOfOptionsLabel.replace("{0}", this.numberOfOptions.toString()).replace("{1}", this.totalNumberOfOptions.toString())
       } else {
-        return "Showing " + numberOfOptions.toString() + " of " + totalNumberOfOptions.toString() + " options"
+        return 'Showing ' + this.numberOfOptions.toString() + ' of ' + this.totalNumberOfOptions.toString() + ' options'
       }
     },
     numberOfOptions () {
