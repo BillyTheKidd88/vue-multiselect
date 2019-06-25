@@ -396,16 +396,16 @@ export default {
     },
     numberOfOptions () {
       if (this.groupSelect) {
-        return filteredOptions.length
+        return this.filteredOptions.length
       } else {
-        return filteredOptions.filter(function (option) { !option.$isLabel }).length
+        return this.filteredOptions.filter(function (option) { !option.$isLabel }).length
       }
     },
     totalNumberOfOptions () {
       if (this.groupSelect) {
-        return options.length
+        return this.options.length
       } else {
-        return options.filter(function (option) { !option.$isLabel }).length
+        return this.options.filter(function (option) { !option.$isLabel }).length
       }
     }
   }
