@@ -391,16 +391,16 @@ export default {
           ? this.isOpen
           : true)
       )
-    }
-  },
-  watch: {
+    },
     showNumberOfOptionsLabelText () {
       if (this.showNumberOfOptionsLabel) {
         return this.showNumberOfOptionsLabel.replace('{0}', this.numberOfOptions.toString()).replace('{1}', this.totalNumberOfOptions.toString())
       } else {
         return 'Showing ' + this.numberOfOptions.toString() + ' of ' + this.totalNumberOfOptions.toString() + ' options'
       }
-    },
+    }
+  },
+  watch: {
     numberOfOptions () {
       if (this.groupSelect) {
         return this.filteredOptions.length
