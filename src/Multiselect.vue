@@ -98,9 +98,12 @@
         >
           <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id" ref="listbox">
             <slot name="beforeList"></slot>
-            <li>
-              <span aria-live="assertive">
-                showing {{ filteredOptions.length }} options
+            <li v-if="showNumberOfOptions" class="multiselect__option">
+              <span v-if="showNumberOfOptionsText" aria-live="assertive">
+                {{ String.format(showNumberOfOptionsText, numberOfOptions, totalNumberOfOptions) }}
+              </span>
+              <span v-else aria-live="assertive">
+                Showing {{ numberOfOptions }} of {{ totalNumberOfOptions }} options
               </span>
             </li>
             <li v-if="multiple && max === internalValue.length">
@@ -301,6 +304,25 @@ export default {
     tabindex: {
       type: Number,
       default: 0
+    },
+    /**
+     * Determines whether the number of available options and number of total options are displayed to the user
+     * @default false
+     * @type {Boolean}
+     */
+    showNumberOfOptions: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * String to show how many options in the drop down are being displayed to the user
+     * Useful for when the drop down is searchable
+     * @default ''
+     * @type {String}
+     */
+    showNumberOfOptionsText: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -371,6 +393,20 @@ export default {
           ? this.isOpen
           : true)
       )
+    }
+    numberOfOptions () {
+      if (this.groupSelect) {
+        return filteredOptions.length
+      } else {
+        return filteredOptions.filter(function (option) { !option.$isLabel }).length
+      }
+    },
+    totalNumberOfOptions () {
+      if (this.groupSelect) {
+        return options.length
+      } else {
+        return options.filter(function (option) { !option.$isLabel }).length
+      }
     }
   }
 }
