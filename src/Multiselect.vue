@@ -393,7 +393,6 @@ export default {
       )
     },
     showNumberOfOptionsLabelText () {
-      console.log(this.filteredOptions)
       if (this.showNumberOfOptionsLabel) {
         return this.showNumberOfOptionsLabel.replace('{0}', this.numberOfOptions.toString()).replace('{1}', this.totalNumberOfOptions.toString())
       } else {
@@ -404,8 +403,7 @@ export default {
       if (this.groupSelect) {
         return this.filteredOptions.length
       } else {
-        console.log(this.filteredOptions)
-        return this.filteredOptions.filter(function (option) { return option.$isLabel == null ? true : option.$isLabel }).length
+        return this.filteredOptions.filter(function (option) { return option.$isLabel == null ? true : !option.$isLabel }).length
       }
     },
     totalNumberOfOptions () {
