@@ -99,7 +99,7 @@
           <ul class="multiselect__content" :style="contentStyle" role="listbox" :id="'listbox-'+id" ref="listbox">
             <slot name="beforeList"></slot>
             <li v-if="showNumberOfOptions" class="multiselect__option">
-              <span aria-live="assertive" aria-role="textbox">
+              <span aria-live="assertive">
                 {{ showNumberOfOptionsLabelText }}
               </span>
             </li>
