@@ -396,14 +396,14 @@ export default {
       )
     },
     numberOfOptions () {
-      if (this.groupSelect) {
+      if (this.group-select) {
         return this.filteredOptions.length
       } else {
         return this.filteredOptions.filter(function (option) { !option.$isLabel }).length
       }
     },
     totalNumberOfOptions () {
-      if (this.groupSelect) {
+      if (this.group-select) {
         return this.options.length
       } else {
         return this.options.filter(function (option) { !option.$isLabel }).length
