@@ -66,7 +66,6 @@
           @keydown.delete.stop="removeLastElement()"
           class="multiselect__input"
           :aria-controls="'listbox-'+id"
-          :aria-label="ariaLabel"
         />
         <span
           v-if="isSingleLabelVisible"
@@ -297,15 +296,6 @@ export default {
     tabindex: {
       type: Number,
       default: 0
-    },
-    /**
-     * Aria-label to be read by screen reader when multiselect is focused
-     * @default ''
-     * @type {String}
-     */
-    ariaLabel: {
-      type: String,
-      default: ''
     }
   },
   computed: {
